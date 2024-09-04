@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestApi.Application.Interfaces.Repositories;
 using TestApi.Persistence.Context;
+using TestApi.Persistence.Repositories;
 
 namespace TestApi.Persistence
 {
@@ -16,6 +18,8 @@ namespace TestApi.Persistence
 		{
 			services.AddDbContext<AppDbContext>(opt => 
 			opt.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
+			services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
 		}
 	}
 }
