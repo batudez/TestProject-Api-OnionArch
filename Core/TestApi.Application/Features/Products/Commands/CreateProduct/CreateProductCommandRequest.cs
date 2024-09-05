@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestApi.Application.Features.Products.Commands.CreateProduct
 {
-	public class CreateProductCommandRequest : IRequest
+	public class CreateProductCommandRequest : IRequest<Unit>
 	{
 		
         public string Title { get; set; }
