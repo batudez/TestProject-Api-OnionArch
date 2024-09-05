@@ -1,6 +1,7 @@
 using TestApi.Persistence;
 using TestApi.Application;
 using TestApi.Mapper;
+using TestApi.Application.Exceptions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,8 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+
+app.ConfigureExceptionHandlingMiddleware();
 
 app.UseHttpsRedirection();
 
