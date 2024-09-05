@@ -25,7 +25,8 @@ namespace TestApi.Persistence.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<Detail> Details { get; set; }
         public DbSet<Product> Products { get; set; }
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

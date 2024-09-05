@@ -22,21 +22,6 @@ namespace TestApi.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("CategoryProduct", b =>
-                {
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("CategoriesId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CategoryProduct");
-                });
-
             modelBuilder.Entity("TestApi.Domain.Entities.Brand", b =>
                 {
                     b.Property<int>("Id")
@@ -64,23 +49,23 @@ namespace TestApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 512, DateTimeKind.Utc).AddTicks(2714),
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 55, DateTimeKind.Utc).AddTicks(6484),
                             IsDeleted = false,
-                            Name = "Computers"
+                            Name = "Shoes, Industrial & Games"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 512, DateTimeKind.Utc).AddTicks(2764),
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 55, DateTimeKind.Utc).AddTicks(6490),
                             IsDeleted = false,
-                            Name = "Industrial, Jewelery & Sports"
+                            Name = "Kids"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 512, DateTimeKind.Utc).AddTicks(2770),
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 55, DateTimeKind.Utc).AddTicks(6501),
                             IsDeleted = true,
-                            Name = "Movies"
+                            Name = "Home & Sports"
                         });
                 });
 
@@ -116,7 +101,7 @@ namespace TestApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 512, DateTimeKind.Utc).AddTicks(4149),
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 55, DateTimeKind.Utc).AddTicks(8189),
                             IsDeleted = false,
                             Name = "Elektrik",
                             ParentId = 0,
@@ -125,7 +110,7 @@ namespace TestApi.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 512, DateTimeKind.Utc).AddTicks(4150),
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 55, DateTimeKind.Utc).AddTicks(8190),
                             IsDeleted = false,
                             Name = "Moda",
                             ParentId = 0,
@@ -134,7 +119,7 @@ namespace TestApi.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 512, DateTimeKind.Utc).AddTicks(4151),
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 55, DateTimeKind.Utc).AddTicks(8191),
                             IsDeleted = false,
                             Name = "Bilgisayar",
                             ParentId = 1,
@@ -143,7 +128,7 @@ namespace TestApi.Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 512, DateTimeKind.Utc).AddTicks(4152),
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 55, DateTimeKind.Utc).AddTicks(8192),
                             IsDeleted = false,
                             Name = "Kadın",
                             ParentId = 2,
@@ -187,28 +172,28 @@ namespace TestApi.Persistence.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 513, DateTimeKind.Utc).AddTicks(7776),
-                            Description = "Makinesi ipsam iusto türemiş kulu.",
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 57, DateTimeKind.Utc).AddTicks(2901),
+                            Description = "Okuma sarmal nihil quis alias.",
                             IsDeleted = false,
-                            Title = "Amet."
+                            Title = "Olduğu."
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 513, DateTimeKind.Utc).AddTicks(7834),
-                            Description = "Açılmadan karşıdakine voluptas koştum et.",
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 57, DateTimeKind.Utc).AddTicks(2931),
+                            Description = "Aspernatur laudantium değerli corporis nisi.",
                             IsDeleted = true,
-                            Title = "Totam laboriosam."
+                            Title = "Quis dolor."
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 4,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 513, DateTimeKind.Utc).AddTicks(7864),
-                            Description = "Aut mutlu hesap voluptatem praesentium.",
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 57, DateTimeKind.Utc).AddTicks(2962),
+                            Description = "Quasi voluptatum voluptatem çorba anlamsız.",
                             IsDeleted = false,
-                            Title = "Quis."
+                            Title = "Amet."
                         });
                 });
 
@@ -254,39 +239,39 @@ namespace TestApi.Persistence.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 515, DateTimeKind.Utc).AddTicks(343),
-                            Description = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-                            Discount = 3.597397766458910m,
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 59, DateTimeKind.Utc).AddTicks(2392),
+                            Description = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+                            Discount = 9.0709748526460m,
                             IsDeleted = false,
-                            Price = 892.42m,
-                            Title = "Sleek Cotton Shoes"
+                            Price = 35.91m,
+                            Title = "Incredible Granite Car"
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 9, 4, 8, 37, 0, 515, DateTimeKind.Utc).AddTicks(370),
-                            Description = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-                            Discount = 4.556059687926880m,
+                            CreatedDate = new DateTime(2024, 9, 5, 12, 34, 13, 59, DateTimeKind.Utc).AddTicks(2415),
+                            Description = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+                            Discount = 6.132333992704980m,
                             IsDeleted = false,
-                            Price = 165.18m,
-                            Title = "Refined Rubber Computer"
+                            Price = 906.13m,
+                            Title = "Refined Fresh Table"
                         });
                 });
 
-            modelBuilder.Entity("CategoryProduct", b =>
+            modelBuilder.Entity("TestApi.Domain.Entities.ProductCategory", b =>
                 {
-                    b.HasOne("TestApi.Domain.Entities.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
 
-                    b.HasOne("TestApi.Domain.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ProductId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("TestApi.Domain.Entities.Detail", b =>
@@ -311,9 +296,35 @@ namespace TestApi.Persistence.Migrations
                     b.Navigation("Brand");
                 });
 
+            modelBuilder.Entity("TestApi.Domain.Entities.ProductCategory", b =>
+                {
+                    b.HasOne("TestApi.Domain.Entities.Category", "Category")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TestApi.Domain.Entities.Product", "Product")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("TestApi.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Details");
+
+                    b.Navigation("ProductCategories");
+                });
+
+            modelBuilder.Entity("TestApi.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("ProductCategories");
                 });
 #pragma warning restore 612, 618
         }
