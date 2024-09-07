@@ -8,7 +8,9 @@ using System.Linq;
 using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
+using TestApi.Application.Interfaces.RedisCache;
 using TestApi.Application.Interfaces.Tokens;
+using TestApi.Infrastructure.RedisCache;
 using TestApi.Infrastructure.Tokens;
 
 namespace TestApi.Infrastructure
@@ -19,6 +21,9 @@ namespace TestApi.Infrastructure
 		{
 			services.Configure<TokenSettings>(configuration.GetSection("JWT"));
 			services.AddTransient<ITokenService, TokenService>();
+
+			services.Configure<RedisCacheSettings>(configuration.GetSection("RedisCacheSettings"));
+			services.AddTransient<IRedisService,RedisCacheService>();
 
 			services.AddAuthentication(opt =>
 			{
@@ -40,6 +45,12 @@ namespace TestApi.Infrastructure
 					ClockSkew = TimeSpan.Zero
 
 				};
+			});
+
+			services.AddStackExchangeRedisCache(opt =>
+			{
+				opt.Configuration = configuration["RedisCacheSettings:ConnectionString"];
+				opt.InstanceName = configuration["RedisCacheSettings:InstanceName"];
 			});
 		}
 	}

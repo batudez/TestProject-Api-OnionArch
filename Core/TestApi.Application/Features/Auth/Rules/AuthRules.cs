@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,16 @@ namespace TestApi.Application.Features.Auth.Rules
 		public Task EmailOrPasswordShouldNotBeInvalid(User? user,bool checkPassword)
 		{
 			if (user is null || !checkPassword) throw new EmailOrPasswordShouldNotBeInvalidException();
+			return Task.CompletedTask;
+		}
+		public Task RefreshTokenShouldNotBeExpired(DateTime expiryDate)
+		{
+			if (expiryDate <= DateTime.UtcNow) throw new RefreshTokenExpiredException();
+			return Task.CompletedTask;
+		}
+		public Task EmailAddressShouldBeValid(User? user)
+		{
+			if (user is null) throw new EmailAddressShouldBeValidException();
 			return Task.CompletedTask;
 		}
 	}

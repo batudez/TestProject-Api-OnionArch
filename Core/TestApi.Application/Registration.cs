@@ -33,6 +33,8 @@ namespace TestApi.Application
 
 			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehaviour<,>));
 
+			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RedisCacheBehaviour<,>));
+
 
 		}
 		private static IServiceCollection AddRulesFromAssemblyContaining(this IServiceCollection services,
