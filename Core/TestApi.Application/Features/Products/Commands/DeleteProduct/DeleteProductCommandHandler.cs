@@ -1,20 +1,25 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestApi.Application.Bases;
+using TestApi.Application.Features.Products.Rules;
+using TestApi.Application.Interfaces.Automapper;
 using TestApi.Application.UnitOfWorks;
 using TestApi.Domain.Entities;
 
 namespace TestApi.Application.Features.Products.Commands.DeleteProduct
 {
-	public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest , Unit>
+	public class DeleteProductCommandHandler : BaseHandler, IRequestHandler<DeleteProductCommandRequest , Unit>
 	{
-		private readonly IUnitOfWork _unitOfWork;
-        public DeleteProductCommandHandler(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
+		
+        public DeleteProductCommandHandler(IMapper mapper, IUnitOfWork _unitOfWork, IHttpContextAccessor httpContextAccessor  ) 
+			: base(mapper, _unitOfWork, httpContextAccessor)
+		{
+            
         }
         public async Task<Unit> Handle(DeleteProductCommandRequest request, CancellationToken cancellationToken)
 		{

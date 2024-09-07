@@ -1,23 +1,23 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestApi.Application.Bases;
 using TestApi.Application.Interfaces.Automapper;
 using TestApi.Application.UnitOfWorks;
 using TestApi.Domain.Entities;
 
 namespace TestApi.Application.Features.Products.Commands.UpdateProduct
 {
-	public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest , Unit>
+	public class UpdateProductCommandHandler : BaseHandler, IRequestHandler<UpdateProductCommandRequest , Unit>
 	{
-		private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        public UpdateProductCommandHandler(IUnitOfWork unitOfWork , IMapper mapper)
-        {
-			_unitOfWork = unitOfWork;
-			_mapper = mapper;
+        public UpdateProductCommandHandler(IMapper mapper, IUnitOfWork _unitOfWork, IHttpContextAccessor httpContextAccessor)
+			: base(mapper, _unitOfWork, httpContextAccessor)
+		{
+		
         }
 
 		public async Task<Unit> Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)

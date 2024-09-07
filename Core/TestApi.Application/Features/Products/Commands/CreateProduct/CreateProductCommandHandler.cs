@@ -1,22 +1,25 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestApi.Application.Bases;
 using TestApi.Application.Features.Products.Rules;
+using TestApi.Application.Interfaces.Automapper;
 using TestApi.Application.UnitOfWorks;
 using TestApi.Domain.Entities;
 
 namespace TestApi.Application.Features.Products.Commands.CreateProduct
 {
-	public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, Unit>
+	public class CreateProductCommandHandler : BaseHandler , IRequestHandler<CreateProductCommandRequest, Unit>
 	{
-		private readonly IUnitOfWork _unitOfWork;
 		private readonly ProductRules _productRules;
-        public CreateProductCommandHandler(IUnitOfWork unitOfWork, ProductRules productRules)
+        public CreateProductCommandHandler(IMapper mapper,IUnitOfWork _unitOfWork,IHttpContextAccessor httpContextAccessor
+			,ProductRules productRules) : base(mapper, _unitOfWork, httpContextAccessor)
         {
-            _unitOfWork = unitOfWork;
+            
 			_productRules = productRules;
         }
 
