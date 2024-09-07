@@ -16,12 +16,12 @@ namespace TestApi.Infrastructure.Tokens
 {
 	public class TokenService : ITokenService
 	{
-		private readonly TokenSettings _settings;
+		private readonly TokenSettings tokenSettings;
 		private readonly UserManager<User> _userManager;
 			
         public TokenService(IOptions<TokenSettings> options , UserManager<User> userManager)
         {
-            _settings = options.Value;
+			tokenSettings = options.Value;
 			_userManager = userManager;
         }
         public async Task<JwtSecurityToken> CreateToken(User user, IList<string> roles)
@@ -37,11 +37,11 @@ namespace TestApi.Infrastructure.Tokens
             {
 				claims.Add(new Claim(ClaimTypes.Role, role));
             }
-			var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Secret));
+			var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.SecretKey));
 			var token = new JwtSecurityToken(
-				issuer : _settings.Issuer,
-				audience: _settings.Audience,
-				expires : DateTime.UtcNow.AddMinutes(_settings.TokenValidityInMinutes),
+				issuer : tokenSettings.Issuer,
+				audience: tokenSettings.Audience,
+				expires : DateTime.Now.AddMinutes(tokenSettings.TokenValidityInMinutes),
 				claims : claims,
 				signingCredentials : new SigningCredentials(key,SecurityAlgorithms.HmacSha256));
 
@@ -65,7 +65,7 @@ namespace TestApi.Infrastructure.Tokens
 				ValidateIssuer = false,
 				ValidateAudience = false,
 				ValidateIssuerSigningKey = true,
-				IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Secret)),
+				IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.SecretKey)),
 				ValidateLifetime = false,
 			};
 

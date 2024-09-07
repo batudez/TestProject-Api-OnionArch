@@ -33,7 +33,7 @@ namespace TestApi.Infrastructure
 					ValidateIssuer = false,
 					ValidateAudience = false,
 					ValidateIssuerSigningKey = true,
-					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])),
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:SecretKey"])),
 					ValidateLifetime = false,
 					ValidIssuer = configuration["JWT:Issuer"],
 					ValidAudience = configuration["JWT:Audience"],
